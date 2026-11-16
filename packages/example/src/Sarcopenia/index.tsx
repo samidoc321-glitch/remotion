@@ -1,4 +1,5 @@
 import {loadFont} from '@remotion/google-fonts/Montserrat';
+import {Audio} from '@remotion/media';
 import React from 'react';
 import {
 	AbsoluteFill,
@@ -6,6 +7,7 @@ import {
 	interpolate,
 	Sequence,
 	spring,
+	staticFile,
 	Track,
 	useCurrentFrame,
 	useVideoConfig,
@@ -105,7 +107,7 @@ const Intro: React.FC = () => {
 const WhatIsIt: React.FC = () => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
-	const muscle = interpolate(frame, [40, 150], [1, 0.45], {
+	const muscle = interpolate(frame, [40, 220], [1, 0.45], {
 		extrapolateLeft: 'clamp',
 		extrapolateRight: 'clamp',
 		easing: Easing.inOut(Easing.quad),
@@ -182,7 +184,7 @@ const Causes: React.FC = () => {
 			>
 				{CAUSES.map((cause, i) => {
 					const s = spring({
-						frame: frame - 20 - i * 40,
+						frame: frame - [38, 124, 173, 240][i],
 						fps,
 						config: {damping: 14},
 					});
@@ -319,19 +321,51 @@ export const Sarcopenia: React.FC = () => {
 				<Sequence name="Intro" durationInFrames={120}>
 					<Intro />
 				</Sequence>
-				<Sequence name="Qué es" from={120} durationInFrames={180}>
+				<Sequence name="Qué es" from={120} durationInFrames={258}>
 					<WhatIsIt />
 				</Sequence>
-				<Sequence name="Causas" from={300} durationInFrames={240}>
+				<Sequence name="Causas" from={378} durationInFrames={320}>
 					<Causes />
 				</Sequence>
-				<Sequence name="Comparación" from={540} durationInFrames={240}>
+				<Sequence name="Comparación" from={698} durationInFrames={246}>
 					<Comparison />
 				</Sequence>
-				<Sequence name="Cierre" from={780} durationInFrames={120}>
+				<Sequence name="Cierre" from={944} durationInFrames={165}>
 					<Outro />
 				</Sequence>
 			</Track>
+			<Track name="Voz">
+				<Audio
+					name="Voz intro"
+					src={staticFile('sarcopenia/voz-1-intro.mp3')}
+					from={8}
+				/>
+				<Audio
+					name="Voz qué es"
+					src={staticFile('sarcopenia/voz-2-que-es.mp3')}
+					from={128}
+				/>
+				<Audio
+					name="Voz causas"
+					src={staticFile('sarcopenia/voz-3-causas.mp3')}
+					from={386}
+				/>
+				<Audio
+					name="Voz comparación"
+					src={staticFile('sarcopenia/voz-4-comparacion.mp3')}
+					from={706}
+				/>
+				<Audio
+					name="Voz cierre"
+					src={staticFile('sarcopenia/voz-5-cierre.mp3')}
+					from={952}
+				/>
+			</Track>
+			<Audio
+				name="Música"
+				src={staticFile('sarcopenia/musica.mp3')}
+				volume={0.14}
+			/>
 		</AbsoluteFill>
 	);
 };
