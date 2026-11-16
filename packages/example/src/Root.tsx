@@ -149,6 +149,7 @@ import RemoteVideo from './RemoteVideo';
 import {RetryDelayRender} from './RetryDelayRender';
 import {RiveEffectsTestbed} from './Rive/RiveEffects';
 import RiveVehicle from './Rive/RiveExample';
+import {Sarcopenia} from './Sarcopenia';
 import {ScalePath} from './ScalePath';
 import {SchemaTest, schemaTestSchema} from './SchemaTest';
 import {Scripts} from './Scripts';
@@ -503,6 +504,14 @@ export const Index: React.FC = () => {
 				fps={30}
 				width={COMMITTED_HOLDS_WIDTH}
 				height={COMMITTED_HOLDS_HEIGHT}
+			/>
+			<Composition
+				id="Sarcopenia"
+				component={Sarcopenia}
+				durationInFrames={900}
+				fps={30}
+				width={1080}
+				height={1920}
 			/>
 			<Folder name="WhatsNew">
 				<WhatsNewRoot />
