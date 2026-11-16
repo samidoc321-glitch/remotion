@@ -508,7 +508,7 @@ export const Index: React.FC = () => {
 			<Composition
 				id="Sarcopenia"
 				component={Sarcopenia}
-				durationInFrames={1109}
+				durationInFrames={1195}
 				fps={30}
 				width={1080}
 				height={1920}

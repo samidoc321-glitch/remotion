@@ -107,7 +107,7 @@ const Intro: React.FC = () => {
 const WhatIsIt: React.FC = () => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
-	const muscle = interpolate(frame, [40, 220], [1, 0.45], {
+	const muscle = interpolate(frame, [40, 240], [1, 0.45], {
 		extrapolateLeft: 'clamp',
 		extrapolateRight: 'clamp',
 		easing: Easing.inOut(Easing.quad),
@@ -184,7 +184,7 @@ const Causes: React.FC = () => {
 			>
 				{CAUSES.map((cause, i) => {
 					const s = spring({
-						frame: frame - [38, 124, 173, 240][i],
+						frame: frame - [43, 123, 176, 249][i],
 						fps,
 						config: {damping: 14},
 					});
@@ -229,7 +229,7 @@ const Causes: React.FC = () => {
 
 const Comparison: React.FC = () => {
 	const frame = useCurrentFrame();
-	const progress = interpolate(frame, [30, 200], [0, 1], {
+	const progress = interpolate(frame, [40, 220], [0, 1], {
 		extrapolateLeft: 'clamp',
 		extrapolateRight: 'clamp',
 		easing: Easing.inOut(Easing.quad),
@@ -318,19 +318,19 @@ export const Sarcopenia: React.FC = () => {
 	return (
 		<AbsoluteFill style={{background: '#faf7f0', color: INK, fontFamily}}>
 			<Track name="Escenas">
-				<Sequence name="Intro" durationInFrames={120}>
+				<Sequence name="Intro" durationInFrames={127}>
 					<Intro />
 				</Sequence>
-				<Sequence name="Qué es" from={120} durationInFrames={258}>
+				<Sequence name="Qué es" from={127} durationInFrames={283}>
 					<WhatIsIt />
 				</Sequence>
-				<Sequence name="Causas" from={378} durationInFrames={320}>
+				<Sequence name="Causas" from={410} durationInFrames={336}>
 					<Causes />
 				</Sequence>
-				<Sequence name="Comparación" from={698} durationInFrames={246}>
+				<Sequence name="Comparación" from={746} durationInFrames={264}>
 					<Comparison />
 				</Sequence>
-				<Sequence name="Cierre" from={944} durationInFrames={165}>
+				<Sequence name="Cierre" from={1010} durationInFrames={185}>
 					<Outro />
 				</Sequence>
 			</Track>
@@ -343,22 +343,22 @@ export const Sarcopenia: React.FC = () => {
 				<Audio
 					name="Voz qué es"
 					src={staticFile('sarcopenia/voz-2-que-es.mp3')}
-					from={128}
+					from={135}
 				/>
 				<Audio
 					name="Voz causas"
 					src={staticFile('sarcopenia/voz-3-causas.mp3')}
-					from={386}
+					from={418}
 				/>
 				<Audio
 					name="Voz comparación"
 					src={staticFile('sarcopenia/voz-4-comparacion.mp3')}
-					from={706}
+					from={754}
 				/>
 				<Audio
 					name="Voz cierre"
 					src={staticFile('sarcopenia/voz-5-cierre.mp3')}
-					from={952}
+					from={1018}
 				/>
 			</Track>
 			<Audio
